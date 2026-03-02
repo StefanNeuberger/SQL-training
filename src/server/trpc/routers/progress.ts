@@ -26,12 +26,13 @@ export const progressRouter = createTRPCRouter({
       })
     )
     .query(async ({ input }) => {
-      return db.query.userProgress.findFirst({
+      const result = await db.query.userProgress.findFirst({
         where: and(
           eq(userProgress.userId, input.userId),
           eq(userProgress.challengeId, input.challengeId)
         ),
       });
+      return result ?? null;
     }),
 
   recordAttempt: publicProcedure

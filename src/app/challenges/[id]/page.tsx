@@ -14,6 +14,7 @@ import {
   ArrowRight,
   ChevronDown,
   ChevronUp,
+  KeyRound,
   Lightbulb,
   Play,
   RotateCcw,
@@ -66,7 +67,13 @@ function ChallengeDetailContent({
   } | null>(null);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [hintOpen, setHintOpen] = useState(false);
+  const [solutionOpen, setSolutionOpen] = useState(false);
   const [schemaOpen, setSchemaOpen] = useState(true);
+
+  const { data: solutionData } = trpc.challenges.getSolution.useQuery(
+    { id: challengeId },
+    { enabled: solutionOpen }
+  );
 
   const executeQuery = trpc.query.execute.useMutation();
   const validateQuery = trpc.query.validate.useMutation();
@@ -224,7 +231,7 @@ function ChallengeDetailContent({
               <div>
                 <button
                   onClick={() => setHintOpen((o) => !o)}
-                  className="flex items-center gap-2 text-xs text-amber-400 hover:text-amber-300 transition-colors"
+                  className="flex items-center gap-2 text-xs text-neutral-400 hover:text-neutral-200 transition-colors"
                 >
                   <Lightbulb className="h-3.5 w-3.5" />
                   {hintOpen ? "Hide hint" : "Show hint"}
@@ -235,14 +242,43 @@ function ChallengeDetailContent({
                   )}
                 </button>
                 {hintOpen && (
-                  <div className="mt-2 rounded-lg border border-amber-800/50 bg-amber-950/30 p-3">
-                    <p className="text-xs text-amber-200 leading-relaxed">
+                  <div className="mt-2 rounded-lg border border-neutral-700 bg-neutral-800/60 p-3">
+                    <p className="text-xs text-neutral-300 leading-relaxed">
                       {challenge.hint}
                     </p>
                   </div>
                 )}
               </div>
             )}
+
+            {/* Solution */}
+            <div>
+              <button
+                onClick={() => setSolutionOpen((o) => !o)}
+                className="flex items-center gap-2 text-xs text-neutral-400 hover:text-neutral-200 transition-colors"
+              >
+                <KeyRound className="h-3.5 w-3.5" />
+                {solutionOpen ? "Hide solution" : "Show solution"}
+                {solutionOpen ? (
+                  <ChevronUp className="h-3 w-3" />
+                ) : (
+                  <ChevronDown className="h-3 w-3" />
+                )}
+              </button>
+              {solutionOpen && solutionData?.solutionQuery && (
+                <div className="mt-2 rounded-lg border border-neutral-700 bg-neutral-800/60 p-3">
+                  <pre className="text-xs text-neutral-200 font-mono whitespace-pre-wrap wrap-break-word leading-relaxed">
+                    {solutionData.solutionQuery}
+                  </pre>
+                  <button
+                    onClick={() => setQuery(solutionData.solutionQuery!)}
+                    className="mt-2 text-xs text-neutral-400 hover:text-neutral-200 transition-colors underline underline-offset-2"
+                  >
+                    Load into editor
+                  </button>
+                </div>
+              )}
+            </div>
 
             <div className="border-t border-neutral-800" />
 

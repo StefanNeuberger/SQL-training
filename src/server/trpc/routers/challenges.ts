@@ -53,6 +53,16 @@ export const challengesRouter = createTRPCRouter({
       }));
     }),
 
+  getSolution: publicProcedure
+    .input(z.object({ id: z.string().uuid() }))
+    .query(async ({ input }) => {
+      const challenge = await db.query.challenges.findFirst({
+        where: eq(challenges.id, input.id),
+        columns: { solutionQuery: true },
+      });
+      return { solutionQuery: challenge?.solutionQuery ?? null };
+    }),
+
   getAdjacentChallenges: publicProcedure
     .input(z.object({ challengeId: z.string().uuid() }))
     .query(async ({ input }) => {
