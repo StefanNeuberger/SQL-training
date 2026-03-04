@@ -39,7 +39,8 @@ const TOPICS: TopicInput[] = [
   {
     name: "SELECT Basics",
     slug: "select-basics",
-    description: "Learn how to retrieve data from a table using SELECT and FROM.",
+    description:
+      "Learn how to retrieve data from a table using SELECT and FROM.",
     level: "beginner",
     orderIndex: 1,
     icon: "Table",
@@ -80,7 +81,8 @@ const TOPICS: TopicInput[] = [
         description:
           "Retrieve a list of unique countries from the `customers` table — no duplicates.",
         difficulty: 2,
-        solutionQuery: "SELECT DISTINCT country FROM customers ORDER BY country",
+        solutionQuery:
+          "SELECT DISTINCT country FROM customers ORDER BY country",
         hint: "Use SELECT DISTINCT to remove duplicate rows. Don't forget to ORDER BY country.",
         orderIndex: 4,
         validationType: "exact",
@@ -90,7 +92,8 @@ const TOPICS: TopicInput[] = [
   {
     name: "WHERE Filtering",
     slug: "where-filtering",
-    description: "Filter rows using WHERE conditions with comparison and logical operators.",
+    description:
+      "Filter rows using WHERE conditions with comparison and logical operators.",
     level: "beginner",
     orderIndex: 2,
     icon: "Filter",
@@ -164,8 +167,7 @@ const TOPICS: TopicInput[] = [
         description:
           "List all products ordered by price from highest to lowest. Return `name` and `price`.",
         difficulty: 1,
-        solutionQuery:
-          "SELECT name, price FROM products ORDER BY price DESC",
+        solutionQuery: "SELECT name, price FROM products ORDER BY price DESC",
         hint: "Use ORDER BY col DESC for descending order.",
         orderIndex: 1,
         validationType: "exact",
@@ -215,7 +217,8 @@ const TOPICS: TopicInput[] = [
     challenges: [
       {
         title: "Count All Products",
-        description: "How many products are in the `products` table? Return a single number aliased as `total_products`.",
+        description:
+          "How many products are in the `products` table? Return a single number aliased as `total_products`.",
         difficulty: 1,
         solutionQuery: "SELECT COUNT(*) AS total_products FROM products",
         hint: "Use COUNT(*) to count all rows in a table.",
@@ -227,8 +230,7 @@ const TOPICS: TopicInput[] = [
         description:
           "Calculate the total revenue across all orders (sum of `total_amount`). Return the result aliased as `total_revenue`.",
         difficulty: 1,
-        solutionQuery:
-          "SELECT SUM(total_amount) AS total_revenue FROM orders",
+        solutionQuery: "SELECT SUM(total_amount) AS total_revenue FROM orders",
         hint: "Use SUM(column) to calculate the total.",
         orderIndex: 2,
         validationType: "exact",
@@ -238,8 +240,7 @@ const TOPICS: TopicInput[] = [
         description:
           "Find the average price of all products. Round the result to 2 decimal places. Alias it `avg_price`.",
         difficulty: 2,
-        solutionQuery:
-          "SELECT ROUND(AVG(price), 2) AS avg_price FROM products",
+        solutionQuery: "SELECT ROUND(AVG(price), 2) AS avg_price FROM products",
         hint: "Use AVG(column) for the mean. Wrap with ROUND(value, 2) for 2 decimal places.",
         orderIndex: 3,
         validationType: "exact",
@@ -357,7 +358,8 @@ const TOPICS: TopicInput[] = [
   {
     name: "NULL Handling",
     slug: "null-handling",
-    description: "Work with NULL values using IS NULL, IS NOT NULL, and COALESCE.",
+    description:
+      "Work with NULL values using IS NULL, IS NOT NULL, and COALESCE.",
     level: "beginner",
     orderIndex: 7,
     icon: "CircleOff",
@@ -391,7 +393,7 @@ const TOPICS: TopicInput[] = [
         difficulty: 2,
         solutionQuery:
           "SELECT name, COALESCE(description, 'No description available') AS product_description FROM products",
-        hint: "COALESCE(value, fallback) returns fallback when value is NULL.",
+        hint: "COALESCE(value, fallback) returns fallback when value is NULL. Alternatively, CASE WHEN description IS NULL THEN 'No description available' ELSE description END produces the same result.",
         orderIndex: 3,
         validationType: "exact",
       },
@@ -404,7 +406,8 @@ const TOPICS: TopicInput[] = [
   {
     name: "INNER JOIN",
     slug: "inner-join",
-    description: "Combine rows from two tables where a matching condition is met.",
+    description:
+      "Combine rows from two tables where a matching condition is met.",
     level: "intermediate",
     orderIndex: 8,
     icon: "Link",
@@ -468,7 +471,8 @@ ORDER BY o.id`,
   {
     name: "LEFT JOIN",
     slug: "left-join",
-    description: "Include all rows from the left table, even when there's no match on the right.",
+    description:
+      "Include all rows from the left table, even when there's no match on the right.",
     level: "intermediate",
     orderIndex: 9,
     icon: "ArrowLeft",
@@ -520,7 +524,8 @@ ORDER BY e.last_name`,
   {
     name: "RIGHT JOIN",
     slug: "right-join",
-    description: "Include all rows from the right table, even when there's no match on the left.",
+    description:
+      "Include all rows from the right table, even when there's no match on the left.",
     level: "intermediate",
     orderIndex: 10,
     icon: "ArrowRight",
@@ -558,7 +563,8 @@ ORDER BY employee_count DESC`,
   {
     name: "FULL OUTER JOIN",
     slug: "full-outer-join",
-    description: "Combine all rows from both tables, with NULLs where there's no match.",
+    description:
+      "Combine all rows from both tables, with NULLs where there's no match.",
     level: "intermediate",
     orderIndex: 11,
     icon: "Combine",
@@ -803,7 +809,8 @@ ORDER BY count DESC`,
   {
     name: "Date Functions",
     slug: "date-functions",
-    description: "Extract, format, and calculate with date and timestamp values.",
+    description:
+      "Extract, format, and calculate with date and timestamp values.",
     level: "intermediate",
     orderIndex: 16,
     icon: "Calendar",
@@ -858,7 +865,8 @@ ORDER BY hire_date`,
   {
     name: "Window Functions",
     slug: "window-functions",
-    description: "Compute values across rows related to the current row without collapsing them.",
+    description:
+      "Compute values across rows related to the current row without collapsing them.",
     level: "advanced",
     orderIndex: 17,
     icon: "BarChart2",
@@ -921,7 +929,8 @@ ORDER BY id`,
   {
     name: "CTEs (WITH clause)",
     slug: "ctes",
-    description: "Write readable, reusable query blocks using Common Table Expressions.",
+    description:
+      "Write readable, reusable query blocks using Common Table Expressions.",
     level: "advanced",
     orderIndex: 18,
     icon: "FileCode",
@@ -990,7 +999,8 @@ ORDER BY category_id`,
   {
     name: "Recursive CTEs",
     slug: "recursive-ctes",
-    description: "Query hierarchical and graph-structured data using recursive CTEs.",
+    description:
+      "Query hierarchical and graph-structured data using recursive CTEs.",
     level: "advanced",
     orderIndex: 19,
     icon: "GitFork",
@@ -1048,7 +1058,8 @@ ORDER BY depth, last_name`,
   {
     name: "Self Joins",
     slug: "self-joins",
-    description: "Join a table to itself to compare rows or traverse hierarchies.",
+    description:
+      "Join a table to itself to compare rows or traverse hierarchies.",
     level: "advanced",
     orderIndex: 20,
     icon: "RefreshCw",
@@ -1091,7 +1102,8 @@ ORDER BY employee_name`,
   {
     name: "Correlated Subqueries",
     slug: "correlated-subqueries",
-    description: "Write subqueries that reference the outer query for row-by-row computation.",
+    description:
+      "Write subqueries that reference the outer query for row-by-row computation.",
     level: "advanced",
     orderIndex: 21,
     icon: "Workflow",
@@ -1142,7 +1154,8 @@ ORDER BY o1.customer_id`,
   {
     name: "EXPLAIN & Query Performance",
     slug: "explain-performance",
-    description: "Analyse query execution plans using EXPLAIN and EXPLAIN ANALYZE.",
+    description:
+      "Analyse query execution plans using EXPLAIN and EXPLAIN ANALYZE.",
     level: "advanced",
     orderIndex: 22,
     icon: "Gauge",
@@ -1197,7 +1210,9 @@ async function main() {
 
   console.log("\n✅ Topics and challenges seeded successfully!");
   console.log(`   ${TOPICS.length} topics`);
-  console.log(`   ${TOPICS.reduce((acc, t) => acc + t.challenges.length, 0)} challenges`);
+  console.log(
+    `   ${TOPICS.reduce((acc, t) => acc + t.challenges.length, 0)} challenges`
+  );
 
   await pool.end();
 }

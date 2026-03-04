@@ -259,7 +259,10 @@ async function main() {
         ('The Great Gatsby',      'F. Scott Fitzgerald classic novel',             12.99, 300, 19),
         ('1984',                  'George Orwell dystopian masterpiece',           11.99, 280, 19),
         ('Atomic Habits',         'James Clear - life-changing habit guide',       22.99, 350, 20),
-        ('Sapiens',               'Yuval Noah Harari - brief history of humankind',24.99, 220, 20)
+        ('Sapiens',               'Yuval Noah Harari - brief history of humankind',24.99, 220, 20),
+        ('Wireless Keyboard',        NULL,                                          49.99,  90,  7),
+        ('USB-C Hub',                NULL,                                          34.99, 150,  7),
+        ('Fitness Resistance Bands', NULL,                                          19.99, 200, 18)
     `);
 
     console.log("Seeding product_suppliers...");
@@ -294,7 +297,10 @@ async function main() {
         (27, 8,    5.50),
         (28, 8,    5.00),
         (29, 8,   10.00),
-        (30, 8,   11.00)
+        (30, 8,   11.00),
+        (31, 1,   24.00),
+        (32, 2,   18.00),
+        (33, 7,    9.00)
     `);
 
     console.log("Seeding customers...");

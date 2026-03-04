@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 import { db } from "@/server/db";
-import { userProgress, challenges, topics } from "@/server/db/app-schema";
+import { userProgress } from "@/server/db/app-schema";
 import { eq, and } from "drizzle-orm";
 
 export const progressRouter = createTRPCRouter({
